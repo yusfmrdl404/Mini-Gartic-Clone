@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mini Gartic Clone</title>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+  <style>
+    body { font-family: Arial; text-align: center; margin: 0; padding: 10px; background: #f0f0f0; }
+    #login, #game { display: none; }
+    .active { display: block; }
+    canvas { border: 2px solid #333; background: white; margin: 10px auto; cursor: crosshair; }
+    input, button { padding: 8px; margin: 5px; font-size: 16px; }
+    #chat { height: 150px; width: 80%; margin: 10px auto; overflow-y: scroll; border: 1px solid #ccc; }
+    .guess { background: #e0f7fa; padding: 5px; margin: 5px; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <div id="login" class="active">
+    <h2>Mini Gartic.io</h2>
+    <input type="text" id="username" placeholder="Kullanıcı adın" />
+    <input type="text" id="roomCode" placeholder="Oda Kodu (örn: ABC123)" />
+    <button onclick="joinRoom()">Odaya Gir</button>
+  </div>
+
+  <div id="game">
+    <h2 id="roomTitle">Oda: <span id="roomIdDisplay"></span></h2>
+    <h3 id="turnInfo">Sıra: <span id="drawerName">...</span></h3>
+    <canvas id="gameCanvas" width="600" height="400"></canvas>
+    <div>
+      <input type="text" id="guessInput" placeholder="Tahminini yaz..." />
+      <button onclick="sendGuess()">Tahmin Et</button>
+    </div>
+    <div id="chat"></div>
+    <div id="players"></div>
+  </div>
+
+  <script src="firebase-config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
